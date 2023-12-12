@@ -59,7 +59,7 @@ export default function Registro(props) {
         function GetDatos(){
             let correo = props.email.toString().replace("@walshp.com.pe","")
             let hoy = new Date();
-            let id = hoy.getDate().toString() + ( hoy.getMonth() + 1 ).toString() + hoy.getFullYear().toString();
+            let id = hoy.getFullYear().toString() + ( hoy.getMonth() + 1 ).toString() + hoy.getDate().toString();
             const starCountRef = ref(app, `registro/entrada/${id}-${correo}`);
             onValue(starCountRef, (snapshot) => {
                 if (snapshot.exists()) {
@@ -76,7 +76,7 @@ export default function Registro(props) {
         function GetDatos(){
             let correo = props.email.toString().replace("@walshp.com.pe","")
             let hoy = new Date();
-            let id = hoy.getDate().toString() + ( hoy.getMonth() + 1 ).toString() + hoy.getFullYear().toString();
+            let id = hoy.getFullYear().toString() + ( hoy.getMonth() + 1 ).toString() + hoy.getDate().toString();
             const starCountRef = ref(app, `registro/salida/${id}-${correo}`);
             onValue(starCountRef, (snapshot) => {
                 if (snapshot.exists()) {
@@ -93,7 +93,7 @@ export default function Registro(props) {
         function GetDatos(){
             let correo = props.email.toString().replace("@walshp.com.pe","")
             let hoy = new Date();
-            let id = hoy.getDate().toString() + ( hoy.getMonth() + 1 ).toString() + hoy.getFullYear().toString();
+            let id = hoy.getFullYear().toString() + ( hoy.getMonth() + 1 ).toString() + hoy.getDate().toString();
             const starCountRef = ref(app, `registro/salidaA/${id}-${correo}`);
             onValue(starCountRef, (snapshot) => {
                 if (snapshot.exists()) {
@@ -110,7 +110,7 @@ export default function Registro(props) {
         function GetDatos(){
             let correo = props.email.toString().replace("@walshp.com.pe","")
             let hoy = new Date();
-            let id = hoy.getDate().toString() + ( hoy.getMonth() + 1 ).toString() + hoy.getFullYear().toString();
+            let id = hoy.getFullYear().toString() + ( hoy.getMonth() + 1 ).toString() + hoy.getDate().toString();
             const starCountRef = ref(app, `registro/retornoA/${id}-${correo}`);
             onValue(starCountRef, (snapshot) => {
                 if (snapshot.exists()) {
