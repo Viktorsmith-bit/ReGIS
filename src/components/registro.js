@@ -444,7 +444,7 @@ function Alert(props){
                 <div className='flex flex-col items-center gap-3'>
                     <h1 className='text-sm lg:text-base text-center'>Su <span className='font-bold'>{props.not}</span> se registró satisfactoriamente a las: <span className='font-bold'>{props.hor} {(parseInt(props.hor.toString().slice(0,2))*60 + parseInt(props.hor.toString().slice(3,5))) <= 720?'a.m.':'p.m.'}</span></h1>
                     <h1 className='text-center'>¡Gracias!</h1>
-                    <button onClick={props.closeAlert} className='py-2 px-4 border border-gray-300 rounded-md back-color text-sm lg:text-base'>Aceptar</button>
+                    <button onClick={props.closeAlert} className='py-2 px-4 border border-gray-300 rounded-md back-color text-sm lg:text-base text-white'>Aceptar</button>
                 </div>
                 
             </div>
@@ -464,7 +464,7 @@ function AlertDouble(props){
                 <div className='flex flex-col items-center gap-3'>
                     <h1 className='text-sm lg:text-base text-center'>Su <span className='font-bold'>{props.notify}</span> ya ha sido registrada. Si se trata de un error, por favor, comunicarse con la <span className='underline'>Gerencia de Recursos Humanos</span>.</h1>
                     <h1 className='text-center'>¡Gracias!</h1>
-                    <button onClick={props.closeAlertDo} className='py-2 px-4 border border-gray-300 rounded-md back-color text-sm lg:text-base'>Aceptar</button>
+                    <button onClick={props.closeAlertDo} className='py-2 px-4 border border-gray-300 rounded-md back-color text-sm lg:text-base text-white'>Aceptar</button>
                 </div>
             </div>
         </div>
@@ -483,7 +483,7 @@ function AlertRetornoA(props){
                 <div className='flex flex-col items-center gap-3'>
                     <h1 className='text-sm lg:text-base text-center'>El tiempo mínimo para el <span className='font-bold'>refrigerio</span> es de 45 minutos, no podrá ingresar su hora de retorno mientras este sea menor.</h1>
                     <h1 className='text-center'>¡Gracias!</h1>
-                    <button onClick={props.closeAlertRA} className='py-2 px-4 border border-gray-300 rounded-md back-color text-sm lg:text-base'>Aceptar</button>
+                    <button onClick={props.closeAlertRA} className='py-2 px-4 border border-gray-300 rounded-md back-color text-sm lg:text-base text-white'>Aceptar</button>
                 </div>
             </div>
         </div>
