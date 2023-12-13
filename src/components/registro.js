@@ -212,13 +212,13 @@ export default function Registro(props) {
         let registro = fecha + ' ' + printHora
         axios.post('https://app.casistemas.com/erh_api/Asistencia/JalaMarcasMasiva',
             {
-                "database":'PROD-WALSH',
+                "database":'PROD_WALSH',
                 "listMarcas":[
                     {
-                        "fotocheck":`${dni}`,
+                        "fotocheck":dni,
                         "cod_reloj":"02",
-                        "fecha":`${fecha}`,
-                        "marca":`${registro}`
+                        "fecha":fecha,
+                        "marca":registro
                     }
                 ]
             },
@@ -270,13 +270,13 @@ export default function Registro(props) {
         let registro = fecha + ' ' + printHora
         axios.post('https://app.casistemas.com/erh_api/Asistencia/JalaMarcasMasiva',
             {
-                "database":'PROD-WALSH',
+                "database":'PROD_WALSH',
                 "listMarcas":[
                     {
-                        "fotocheck":`${dni}`,
+                        "fotocheck":dni,
                         "cod_reloj":"02",
-                        "fecha":`${fecha}`,
-                        "marca":`${registro}`
+                        "fecha":fecha,
+                        "marca":registro
                     }
                 ]
             },
@@ -325,13 +325,13 @@ export default function Registro(props) {
         let registro = fecha + ' ' + printHora
         axios.post('https://app.casistemas.com/erh_api/Asistencia/JalaMarcasMasiva',
             {
-                "database":'PROD-WALSH',
+                "database":'PROD_WALSH',
                 "listMarcas":[
                     {
-                        "fotocheck":`${dni}`,
+                        "fotocheck":dni,
                         "cod_reloj":"02",
-                        "fecha":`${fecha}`,
-                        "marca":`${registro}`
+                        "fecha":fecha,
+                        "marca":registro
                     }
                 ]
             },
@@ -391,13 +391,13 @@ export default function Registro(props) {
                 } else {
                     axios.post('https://app.casistemas.com/erh_api/Asistencia/JalaMarcasMasiva',
                         {
-                            "database":'PROD-WALSH',
+                            "database":'PROD_WALSH',
                             "listMarcas":[
                                 {
-                                    "fotocheck":`${dni}`,
+                                    "fotocheck":dni,
                                     "cod_reloj":"02",
-                                    "fecha":`${fecha}`,
-                                    "marca":`${registro}`
+                                    "fecha":fecha,
+                                    "marca":registro
                                 }
                             ]
                         },
