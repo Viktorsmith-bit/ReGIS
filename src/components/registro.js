@@ -215,10 +215,10 @@ export default function Registro(props) {
                 "database":'PROD_WALSH',
                 "listMarcas":[
                     {
-                        "fotocheck":dni,
+                        "fotocheck":`${dni}`,
                         "cod_reloj":"02",
-                        "fecha":fecha,
-                        "marca":registro
+                        "fecha":`${fecha}`,
+                        "marca":`${registro}`
                     }
                 ]
             },
@@ -273,10 +273,10 @@ export default function Registro(props) {
                 "database":'PROD_WALSH',
                 "listMarcas":[
                     {
-                        "fotocheck":dni,
+                        "fotocheck":`${dni}`,
                         "cod_reloj":"02",
-                        "fecha":fecha,
-                        "marca":registro
+                        "fecha":`${fecha}`,
+                        "marca":`${registro}`
                     }
                 ]
             },
@@ -328,10 +328,10 @@ export default function Registro(props) {
                 "database":'PROD_WALSH',
                 "listMarcas":[
                     {
-                        "fotocheck":dni,
+                        "fotocheck":`${dni}`,
                         "cod_reloj":"02",
-                        "fecha":fecha,
-                        "marca":registro
+                        "fecha":`${fecha}`,
+                        "marca":`${registro}`
                     }
                 ]
             },
@@ -394,10 +394,10 @@ export default function Registro(props) {
                             "database":'PROD_WALSH',
                             "listMarcas":[
                                 {
-                                    "fotocheck":dni,
+                                    "fotocheck":`${dni}`,
                                     "cod_reloj":"02",
-                                    "fecha":fecha,
-                                    "marca":registro
+                                    "fecha":`${fecha}`,
+                                    "marca":`${registro}`
                                 }
                             ]
                         },
