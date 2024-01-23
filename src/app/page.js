@@ -45,7 +45,7 @@ export default function Home(props) {
                 <Image src='/Logo_Walsh_Version_Corporativa.png' className='image' width={250} height={250} alt='Walsh Perú' priority/>
               </div>
               <div className='px-4 lg:px-0 lg:w-8/12'>
-                <h1 className='font-black text-center text-4xl'>Bienvenido</h1>
+                <h1 className='font-bold text-center text-4xl'>Bienvenido a ReGIS</h1>
                 <h1 className='text-center text-sm text-gray-500 mt-2'>Registro de horas de ingreso y salida bajo la modalidad del teletrabajo</h1>
                 <form className='mt-10'>
                   <div className='w-full lg:flex-1'>
@@ -113,14 +113,4 @@ export default function Home(props) {
       }
     </Fragment>
   )
-}
-
-{
-  /**
-   * <div className='opacity p-10 w-full'>
-              <h1 className='text-white text-4xl text-center font-bold'>Felices Fiestas</h1>
-              <h1 className='text-white text-center font-bold'>Eres lo más valioso para nosotros</h1>
-              <h1 className='text-white text-center font-bold'>¡Esperamos contar contigo durante muchas Navidades más!</h1>
-            </div>
-   */
 }
