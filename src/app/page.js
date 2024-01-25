@@ -24,8 +24,8 @@ export default function Home(props) {
         setTimeout(()=>{
           setNot('')
         }, 4000)
-          const errorCode = error.code;
-          const errorMessage = error.message;
+        const errorCode = error.code;
+        const errorMessage = error.message;
       });
   }
 
@@ -45,7 +45,7 @@ export default function Home(props) {
                 <Image src='/Logo_Walsh_Version_Corporativa.png' className='image' width={250} height={250} alt='Walsh Perú' priority/>
               </div>
               <div className='px-4 lg:px-0 lg:w-8/12'>
-                <h1 className='font-bold text-center text-4xl'>Bienvenido a ReGIS</h1>
+                <h1 className='font-black text-center text-4xl'>Bienvenido a ReGIS</h1>
                 <h1 className='text-center text-sm text-gray-500 mt-2'>Registro de horas de ingreso y salida bajo la modalidad del teletrabajo</h1>
                 <form className='mt-10'>
                   <div className='w-full lg:flex-1'>

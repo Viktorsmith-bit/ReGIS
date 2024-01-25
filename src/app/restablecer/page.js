@@ -69,8 +69,8 @@ export default function ResetPassword() {
               <button onClick={Reset} className='py-2 mt-2 w-full text-white rounded-md text-sm' style={{backgroundColor:'rgb(69, 128, 94)'}}>Enviar enlace</button>
             </form>
             <Link href={"/"}>
-                <button className='bg-gray-200 py-2 mt-2 w-full rounded-md text-sm'>Volver</button>
-              </Link>
+              <button className='bg-gray-200 py-2 mt-2 w-full rounded-md text-sm'>Volver</button>
+            </Link>
             <h1 className='text-xs mt-4 text-gray-400 text-center'>ReGIS v.3.0 </h1>
             <h1 className='text-xs text-gray-400 text-center'>Web application developed by Gerencia de SIG e Innovación - Walsh Perú - 2023</h1>
           </div>
