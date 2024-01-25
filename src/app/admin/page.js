@@ -1,6 +1,7 @@
 'use client';
 import { useState } from "react";
 import { updateEmail, createUserWithEmailAndPassword } from "firebase/auth";
+import Link from 'next/link';
 import { Toaster, toast } from 'sonner'
 import { auth } from "../../../firebase";
 import {app} from '../../../firebase';
@@ -114,6 +115,9 @@ export default function Admin(){
                             </div>
                             <button onClick={Registrar} className='py-3 mt-5 w-full text-sm back-color text-white'>Registrar colaborador</button>
                         </form>
+                        <Link href={"/login"}>
+                            <button className='bg-gray-200 py-3 mt-2 w-full text-sm'>Cerrar sesión</button>
+                        </Link>
                     </div>
                 </div>
             </div>
