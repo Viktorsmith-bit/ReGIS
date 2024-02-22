@@ -4,7 +4,6 @@ import {app} from '../../../../firebase';
 import { ref, onValue} from "firebase/database";
 import { utils , writeFile} from 'xlsx';
 import { Toaster, toast } from 'sonner'
-import Loading from "@/components/suspense/loading";
 
 let hoy = new Date();
     let mes = parseInt(hoy.getMonth() + 1) >= 10? hoy.getMonth() : '0' + '' + (hoy.getMonth() + 1)
@@ -50,7 +49,7 @@ export default function Consultar(props){
             <Toaster richColors visibleToasts={4} closeButton />
             <div className="flex justify-center mt-10">
                 <div className="flex-1 w-full lg:max-w-5xl bg-white p-4 lg:p-6 border border-gray-300">
-                    <h1 className="text-center mt-5">Consultar marcaciones</h1>
+                    <h1 className="text-center">Consultar marcaciones</h1>
                     <div className="flex justify-end items-center mt-10">
                         {
                             colaborador !== undefined?<div onClick={(e)=>{

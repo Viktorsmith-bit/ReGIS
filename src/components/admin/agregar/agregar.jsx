@@ -11,7 +11,6 @@ export default function Agregar(props){
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
-    const [user, setUser] = useState('')
     const [nombres, setNombres] = useState('')
     const [apellidos, setApellidos] = useState('')
     const [dni, setDni] = useState('')
@@ -24,7 +23,6 @@ export default function Agregar(props){
     function captarCambiosEmail(e){e.preventDefault(), setEmail(e.target.value)}
     function captarCambiosPassword(e){e.preventDefault(), setPassword(e.target.value)}
     function captarCambiosConfirmPassword(e){e.preventDefault(), setConfirmPassword(e.target.value)}
-    function captarCambiosUser(e){e.preventDefault(), setUser(e.target.value)}
     function captarCambiosNombres(e){e.preventDefault(), setNombres(e.target.value)}
     function captarCambiosApellidos(e){e.preventDefault(), setApellidos(e.target.value)}
     function captarCambiosDni(e){e.preventDefault(), setDni(e.target.value)}
@@ -53,7 +51,7 @@ export default function Agregar(props){
                             </div>
                             <div className="w-full lg:flex-1 mt-3 lg:mt-0">
                                 <h1 className="font-bold text-sm">Nombre de usuario *</h1>
-                                <input value={user} onChange={captarCambiosUser} type='text' className='focus:outline-none focus:border-green-500 focus:ring-1 border border-gray-300 input text-xs w-full h-10 px-2 mt-2' placeholder='gmorante' required/>
+                                <input value={email.toString().replace("@walshp.com.pe","")} type='text' className='focus:outline-none focus:border-green-500 focus:ring-1 border border-gray-300 input text-xs w-full h-10 px-2 mt-2' placeholder='gmorante' required/>
                             </div>
                         </div>
                         <div className='flex flex-wrap items-center gap-2 mt-5'>
@@ -134,19 +132,19 @@ export default function Agregar(props){
     function Registrar(e){
         e.preventDefault()
         const starCountRef = ref(app);
-        const userName = user.toString().replace("@walshp.com.pe","")
-        if(nombres === '' || apellidos === '' || cargo === '' || area === '' || siglas === '' || dni === '' || email === '' || password.length < 6){
+        const userName = email.toString().replace("@walshp.com.pe","")
+        if(nombres === '' || apellidos === '' || cargo === '' || area === 'seleccionar' || siglas === 'seleccionar' || horaE === 'seleccionar' || horaS === 'seleccionar'|| dni === '' || email === '' || password.length < 6){
             toast.error(password.length < 6 ?'La contraseña debe contener 6 caracteres como mínimo':'Complete todos los campos')
         }else{
-            createUserWithEmailAndPassword(auth, email, password).then((userCredential) => {
-                    console.log('Usuario registrado con éxito')
-                }).catch((error) => {
-                    console.log(error)
-            });
             get(child(starCountRef, 'Staff/' + userName)).then((snapshot) => {
                 if (snapshot.exists()) {
                     toast.info('Este usuario ya está registrado')
                 } else {
+                    createUserWithEmailAndPassword(auth, email, password).then((userCredential) => {
+                        console.log('Usuario registrado con éxito')
+                        }).catch((error) => {
+                            console.log(error)
+                    });
                     set(ref(app, 'Staff/' + userName.toLowerCase()), {
                         Nombres: `${nombres.toUpperCase()}`,
                         Apellidos: `${apellidos.toUpperCase()}`,
@@ -165,5 +163,4 @@ export default function Agregar(props){
             });
         }
     }
-
 }

@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import {app} from '../../../../../firebase';
-import { ref, onValue, update} from "firebase/database";
+import { ref, get, update, child} from "firebase/database";
 import { Toaster, toast } from 'sonner'
 
 export default function Datos(props){
     const [datos, setDatos] = useState({email:'',usuario:'',nombres:'',apellidos:'',dni:'',cargo:'',horaE:'',horaS:'',area:'',siglas:''})
+    const [edicion, setEdicion] = useState(true)
 
     function captarCambiosNombres(e){setDatos({...datos, nombres:e.target.value})}
     function captarCambiosApellidos(e){setDatos({...datos, apellidos:e.target.value})}
@@ -17,8 +18,8 @@ export default function Datos(props){
 
     useEffect(()=>{
         function GetData(){
-            const starCountRef = ref(app, `Staff/${props.user}`);
-            onValue(starCountRef, (snapshot) => {
+            const starCountRef = ref(app);
+            get(child(starCountRef,`Staff/${props.user}`)).then((snapshot)=>{
                 if(snapshot.exists()){
                     setDatos({
                         email:snapshot.val().Correo,
@@ -33,12 +34,12 @@ export default function Datos(props){
                         siglas:snapshot.val().Siglas
                     })
                 }
-            });
+            }).catch((e)=>{
+                console.log(e)
+            })
         }
         return GetData();
     },[props.user])
-    
-    console.log(datos.nombres)
 
     return(
         <div className={`absolute top-0 left-0 h-screen flex items-center justify-center w-full ${props.user === ''?'hidden':'bloque'}`}>
@@ -84,7 +85,7 @@ export default function Datos(props){
                         </div>
                     </form> 
                     <div className="flex justify-center gap-2 mt-8">
-                        <button onClick={props.cancelarEdicion} className="text-sm bg-gray-200 py-2 px-3 rounded-sm">Cancelar</button>
+                        <button onClick={props.cancelarEdicion} className="text-sm bg-gray-200 py-2 px-3 rounded-sm">{edicion === true?'Cancelar edición':'Terminar edición'}</button>
                         <button onClick={Actualizar} className="text-sm color-walsh py-2 px-3 text-white rounded-sm">Actualizar</button>
                     </div>    
                 </div>
@@ -105,6 +106,7 @@ export default function Datos(props){
             Siglas: `${datos.siglas.toUpperCase()}`,
         }).then(() => {
             toast.success('Los datos se han actualizado con éxito')
+            setEdicion(false)
           })
           .catch((error) => {
             toast.warning('Los datos no se han podido actualizar')

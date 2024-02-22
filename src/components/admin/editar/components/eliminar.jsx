@@ -70,15 +70,15 @@ export default function Eliminar(props){
                 deleteUser(auth.currentUser, datos.email).then(() => {
             
                 }).catch((error) => {
-                    toast.warning('El usuario no podido ser eliminado')
+                    toast.warning('La cuenta no ha podido ser eliminada')
                 });
                 remove(ref(app, `Staff/` + props.borrar)).then(() => {
-                    toast.success('El usuario ha sido elimado con éxito')
+                    toast.success('La cuenta ha sido elimado con éxito')
                 }).catch((error) => {
-                    toast.warning('El usuario no podido ser eliminado')
+                    toast.warning('La cuenta no ha podido ser eliminada')
                 });
             } else {
-                toast.info('Este usuario ya no existe')
+                toast.info('Esta cuenta ya no existe')
             }
         }).catch((error) => {
             console.error(error);

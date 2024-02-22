@@ -37,9 +37,6 @@ export default function Editar(props){
             <div className="flex justify-center mt-10">
                 <div className="flex-1 md:max-w-xl lg:max-w-2xl bg-white p-4 lg:p-6 border border-gray-200">
                     <h1 className="text-center">Editar colaboradores</h1>
-                    {
-                        colaborador === undefined?<h1></h1>:<h1 className="mt-5">{'Total: ' + colaborador.length}</h1>
-                    }
                     <div className="flex items-center border border-gray-200 mt-5">
                         <div className="flex items-center justify-center h-6 w-12 border-r border-gray-200">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-search" viewBox="0 0 16 16">

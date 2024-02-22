@@ -53,7 +53,7 @@ export default function Registro(props) {
             });
         }
         return GetDatos();
-    }, [])
+    }, [props.email])
 
     useEffect(()=>{
         function GetDatos(){
@@ -78,9 +78,7 @@ export default function Registro(props) {
             });
         }
         return GetDatos();
-    }, [])
-
-    console.log(horaSA)
+    }, [props.email])
 
     function closeAlert(e){e.preventDefault(), setAlert(false)}
     function closeAlertDo(e){e.preventDefault(), setAlertDo(false)}
