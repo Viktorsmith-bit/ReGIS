@@ -24,8 +24,6 @@ export default function Home() {
         setTimeout(()=>{
           setNot('')
         }, 4000)
-        const errorCode = error.code;
-        const errorMessage = error.message;
       });
   }
 
@@ -41,11 +39,21 @@ export default function Home() {
       {
         email === '' &&  <div className='flex'>
             <div className='flex-1 flex flex-col justify-between items-center h-screen py-10 px-4 lg:px-0'>
-              <div className='flex items-center justify-center px-4 lg:px-0 lg:w-8/12'>
-                <Image src='/Logo_Walsh_Version_Corporativa.png' className='image' width={250} height={250} alt='Walsh Perú' priority/>
+              <div className='flex justify-end px-4 w-full lg:px-0 lg:w-8/12'>
+                <Link href="/panel">
+                  <div className='flex items-center gap-1 cursor-pointer'>
+                    <h1 className='text-base font-bold'>Panel</h1>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                      <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
+                    </svg>
+                  </div>
+                </Link>
               </div>
               <div className='px-4 lg:px-0 lg:w-8/12'>
-                <h1 className='font-black text-center text-4xl'>Bienvenido a ReGIS</h1>
+                <div className='flex items-center justify-center'>
+                  <Image src='/Logo_Walsh_Version_Corporativa.png' className='image' width={250} height={250} alt='Walsh Perú' priority/>
+                </div>
+                <h1 className='font-black text-center text-3xl mt-5'>Bienvenido a ReGIS</h1>
                 <h1 className='text-center text-sm text-gray-500 mt-2'>Registro de horas de ingreso y salida bajo la modalidad del teletrabajo</h1>
                 <form className='mt-10'>
                   <div className='w-full lg:flex-1'>

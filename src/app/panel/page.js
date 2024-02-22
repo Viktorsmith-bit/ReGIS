@@ -28,7 +28,7 @@ export default function Login(){
                 }, 4000)
             });
         }else{
-            toast.error('Usted no tiene acceso')
+            toast.error(cor === '' && con === ''?'Escriba su correo y contraseña':cor === ''?'Escriba su correo':con === ''?'Escriba su contraseña':'Usted no tiene acceso al Panel de ReGIS')
         }
     }
 
@@ -41,8 +41,8 @@ export default function Login(){
     return(
         <div className='flex-1 flex justify-center items-center h-screen py-10 px-4 lg:px-0'>
             <Toaster richColors visibleToasts={4} closeButton />
-            <div className='px-4 lg:px-0 lg:w-2/6'>
-                <h1 className='font-bold text-center text-2xl'>ACCESO RESTRINGIDO</h1>
+            <div className='px-4 w-full lg:px-0 lg:w-2/6'>
+                <h1 className='font-bold text-center text-xl lg:text-2xl'>ACCESO RESTRINGIDO</h1>
                 <h1 className='text-center text-sm text-gray-500 mt-2'>Solo personal autorizado</h1>
                 <form className='mt-10'>
                     <div className='w-full lg:flex-1'>
@@ -94,7 +94,7 @@ export default function Login(){
                     <button onClick={Login} className='py-3 mt-5 w-full text-sm back-color text-white rounded-sm'>Iniciar sesión</button>
                 </form>
                 <Link href={"/"}>
-                    <button className='bg-gray-200 py-3 mt-2 w-full text-sm rounded-sm'>Volver</button>
+                    <button className='bg-gray-200 py-3 mt-2 w-full text-sm rounded-sm'>Ir al inicio</button>
                 </Link>
             </div>
         </div>

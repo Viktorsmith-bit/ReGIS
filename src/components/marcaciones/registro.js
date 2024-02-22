@@ -1,13 +1,12 @@
 'use client';
 import { useEffect, useState } from 'react';
-import { useRouter, useParams } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import axios from 'axios';
 import { Alert } from './alert';
 import { AlertDouble } from './alert';
 import { AlertRetornoA } from './alert';
 import {app} from '../../../firebase';
-import { ref, set, onValue, child, get, update} from "firebase/database";
-import { Chilanka } from 'next/font/google';
+import { ref, onValue, child, get, update} from "firebase/database";
 
 export default function Registro(props) {
     const router = useRouter();
@@ -180,11 +179,9 @@ export default function Registro(props) {
         let minutos = hoy.getMinutes() >= 10? hoy.getMinutes() : '0' + hoy.getMinutes() 
         let printHora = hora + ':' + minutos
         let registro = fecha + ' ' + printHora
-        {
-            /**
-             * axios.post('https://app.casistemas.com/erh_api/Asistencia/JalaMarcasMasiva',
+        axios.post(`${process.env.NEXT_PUBLIC_db_url}`,
             {
-                "database":'PROD_WALSH',
+                "database":`${process.env.NEXT_PUBLIC_db_name}`,
                 "listMarcas":[
                     {
                         "fotocheck":`${dni}`,
@@ -196,13 +193,11 @@ export default function Registro(props) {
             },
             {
                 auth: {
-                    username: 'u_walsh',
-                    password: 'ca@s1st3m4sw4@lsh'
-              }
+                    username: `${process.env.NEXT_PUBLIC_db_user}`,
+                    password: `${process.env.NEXT_PUBLIC_db_password}`
+                }
             }
         ).then((response)=>{console.log(response)}).catch((error)=>{console.log(error)})
-             */
-        }
         const starCountRef = ref(app);
         get(child(starCountRef, 'marcaciones/' + id + '-' + cor)).then((snapshot) => {
             if (snapshot.exists()) {
@@ -265,11 +260,9 @@ export default function Registro(props) {
         let minutos = hoy.getMinutes() >= 10? hoy.getMinutes() : '0' + hoy.getMinutes() 
         let printHora = hora + ':' + minutos
         let registro = fecha + ' ' + printHora
-        {
-            /**
-             * axios.post('https://app.casistemas.com/erh_api/Asistencia/JalaMarcasMasiva',
+        axios.post(`${process.env.NEXT_PUBLIC_db_url}`,
             {
-                "database":'PROD_WALSH',
+                "database":`${process.env.NEXT_PUBLIC_db_name}`,
                 "listMarcas":[
                     {
                         "fotocheck":`${dni}`,
@@ -281,13 +274,11 @@ export default function Registro(props) {
             },
             {
                 auth: {
-                    username: 'u_walsh',
-                    password: 'ca@s1st3m4sw4@lsh'
-              }
+                    username: `${process.env.NEXT_PUBLIC_db_user}`,
+                    password: `${process.env.NEXT_PUBLIC_db_password}`
+                }
             }
         ).then((response)=>{console.log(response)}).catch((error)=>{console.log(error)})
-             */
-        }
         const starCountRef = ref(app);
         get(child(starCountRef, 'marcaciones/' + id + '-' + cor)).then((snapshot)=>{
             if (snapshot.exists()) {
@@ -342,11 +333,9 @@ export default function Registro(props) {
         let minutos = hoy.getMinutes() >= 10? hoy.getMinutes() : '0' + hoy.getMinutes() 
         let printHora = hora + ':' + minutos
         let registro = fecha + ' ' + printHora
-        {
-            /**
-             * axios.post('https://app.casistemas.com/erh_api/Asistencia/JalaMarcasMasiva',
+        axios.post(`${process.env.NEXT_PUBLIC_db_url}`,
             {
-                "database":'PROD_WALSH',
+                "database":`${process.env.NEXT_PUBLIC_db_name}`,
                 "listMarcas":[
                     {
                         "fotocheck":`${dni}`,
@@ -358,13 +347,11 @@ export default function Registro(props) {
             },
             {
                 auth: {
-                    username: 'u_walsh',
-                    password: 'ca@s1st3m4sw4@lsh'
-              }
+                    username: `${process.env.NEXT_PUBLIC_db_user}`,
+                    password: `${process.env.NEXT_PUBLIC_db_password}`
+                }
             }
         ).then((response)=>{console.log(response)}).catch((error)=>{console.log(error)})
-             */
-        }
         const starCountRef = ref(app);
         get(child(starCountRef, 'marcaciones/' + id + '-' + cor)).then((snapshot)=>{
             if (snapshot.exists()) {
@@ -431,11 +418,9 @@ export default function Registro(props) {
                         setNotify('hora de retorno del refrigerio')
                         setAlertDo(true)
                     }else{
-                        {
-                            /**
-                             * axios.post('https://app.casistemas.com/erh_api/Asistencia/JalaMarcasMasiva',
+                        axios.post(`${process.env.NEXT_PUBLIC_db_url}`,
                             {
-                                "database":'PROD_WALSH',
+                                "database":`${process.env.NEXT_PUBLIC_db_name}`,
                                 "listMarcas":[
                                     {
                                         "fotocheck":`${dni}`,
@@ -447,13 +432,11 @@ export default function Registro(props) {
                             },
                             {
                                 auth: {
-                                    username: 'u_walsh',
-                                    password: 'ca@s1st3m4sw4@lsh'
-                            }
+                                    username: `${process.env.NEXT_PUBLIC_db_user}`,
+                                    password: `${process.env.NEXT_PUBLIC_db_password}`
+                                }
                             }
                         ).then((response)=>{console.log(response)}).catch((error)=>{console.log(error)})
-                             */
-                        }
                         update(ref(app, 'marcaciones/' + id + '-' + cor), {
                             nombres: nom,
                             apellidos: ape,
