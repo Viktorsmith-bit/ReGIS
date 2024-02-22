@@ -4,9 +4,9 @@ import Link from 'next/link';
 import Image from 'next/image';
 import {signInWithEmailAndPassword } from "firebase/auth";
 import {auth} from '../../firebase';
-import Registro from '@/components/registro';
+import Registro from '@/components/marcaciones/registro';
 
-export default function Home(props) {
+export default function Home() {
   const [cor, setCor] = useState('')
   const [con, setCon] = useState('')
   const [vis, setVis] = useState(true)

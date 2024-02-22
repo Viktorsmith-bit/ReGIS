@@ -14,7 +14,10 @@
     background-size: cover;
     background-repeat: no-repeat;
   }
-
+ 
+.color-walsh{
+  background-color: rgb(75, 165, 153);
+} 
 .input{
     outline: none;
   }
