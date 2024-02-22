@@ -177,9 +177,9 @@ export default function Registro(props) {
         let minutos = hoy.getMinutes() >= 10? hoy.getMinutes() : '0' + hoy.getMinutes() 
         let printHora = hora + ':' + minutos
         let registro = fecha + ' ' + printHora
-        axios.post(`${process.env.NEXT_PUBLIC_db_url}`,
+        axios.post('https://app.casistemas.com/erh_api/Asistencia/JalaMarcasMasiva',
             {
-                "database":`${process.env.NEXT_PUBLIC_db_name}`,
+                "database":'PROD_WALSH',
                 "listMarcas":[
                     {
                         "fotocheck":`${dni}`,
@@ -191,8 +191,8 @@ export default function Registro(props) {
             },
             {
                 auth: {
-                    username: `${process.env.NEXT_PUBLIC_db_user}`,
-                    password: `${process.env.NEXT_PUBLIC_db_password}`
+                    username: 'u_walsh',
+                    password: 'ca@s1st3m4sw4@lsh'
                 }
             }
         ).then((response)=>{console.log(response)}).catch((error)=>{console.log(error)})
@@ -258,9 +258,9 @@ export default function Registro(props) {
         let minutos = hoy.getMinutes() >= 10? hoy.getMinutes() : '0' + hoy.getMinutes() 
         let printHora = hora + ':' + minutos
         let registro = fecha + ' ' + printHora
-        axios.post(`${process.env.NEXT_PUBLIC_db_url}`,
+        axios.post('https://app.casistemas.com/erh_api/Asistencia/JalaMarcasMasiva',
             {
-                "database":`${process.env.NEXT_PUBLIC_db_name}`,
+                "database":'PROD_WALSH',
                 "listMarcas":[
                     {
                         "fotocheck":`${dni}`,
@@ -272,8 +272,8 @@ export default function Registro(props) {
             },
             {
                 auth: {
-                    username: `${process.env.NEXT_PUBLIC_db_user}`,
-                    password: `${process.env.NEXT_PUBLIC_db_password}`
+                    username: 'u_walsh',
+                    password: 'ca@s1st3m4sw4@lsh'
                 }
             }
         ).then((response)=>{console.log(response)}).catch((error)=>{console.log(error)})
@@ -331,9 +331,9 @@ export default function Registro(props) {
         let minutos = hoy.getMinutes() >= 10? hoy.getMinutes() : '0' + hoy.getMinutes() 
         let printHora = hora + ':' + minutos
         let registro = fecha + ' ' + printHora
-        axios.post(`${process.env.NEXT_PUBLIC_db_url}`,
+        axios.post('https://app.casistemas.com/erh_api/Asistencia/JalaMarcasMasiva',
             {
-                "database":`${process.env.NEXT_PUBLIC_db_name}`,
+                "database":'PROD_WALSH',
                 "listMarcas":[
                     {
                         "fotocheck":`${dni}`,
@@ -345,8 +345,8 @@ export default function Registro(props) {
             },
             {
                 auth: {
-                    username: `${process.env.NEXT_PUBLIC_db_user}`,
-                    password: `${process.env.NEXT_PUBLIC_db_password}`
+                    username: 'u_walsh',
+                    password: 'ca@s1st3m4sw4@lsh'
                 }
             }
         ).then((response)=>{console.log(response)}).catch((error)=>{console.log(error)})
@@ -416,9 +416,9 @@ export default function Registro(props) {
                         setNotify('hora de retorno del refrigerio')
                         setAlertDo(true)
                     }else{
-                        axios.post(`${process.env.NEXT_PUBLIC_db_url}`,
+                        axios.post('https://app.casistemas.com/erh_api/Asistencia/JalaMarcasMasiva',
                             {
-                                "database":`${process.env.NEXT_PUBLIC_db_name}`,
+                                "database":'PROD_WALSH',
                                 "listMarcas":[
                                     {
                                         "fotocheck":`${dni}`,
@@ -430,8 +430,8 @@ export default function Registro(props) {
                             },
                             {
                                 auth: {
-                                    username: `${process.env.NEXT_PUBLIC_db_user}`,
-                                    password: `${process.env.NEXT_PUBLIC_db_password}`
+                                    username: 'u_walsh',
+                                    password: 'ca@s1st3m4sw4@lsh'
                                 }
                             }
                         ).then((response)=>{console.log(response)}).catch((error)=>{console.log(error)})
