@@ -3,12 +3,12 @@ import { getAuth} from "firebase/auth";
 import { getDatabase } from "firebase/database";
 
 const quaterneryAppConfig = {
-    apiKey: "AIzaSyAOMtqqRv3mkGPnAGwkbVTAMqAugBYtRyY",
-    authDomain: "walsh-a.firebaseapp.com",
-    projectId: "walsh-a",
-    storageBucket: "walsh-a.appspot.com",
-    messagingSenderId: "272356071483",
-    appId: "1:272356071483:web:35e1f1f421144506f1a41e"
+    apiKey: `${process.env.NEXT_PUBLIC_apiKey}`,
+    authDomain: `${process.env.NEXT_PUBLIC_authDomain}`,
+    projectId: `${process.env.NEXT_PUBLIC_projectId}`,
+    storageBucket: `${process.env.NEXT_PUBLIC_storageBucket}`,
+    messagingSenderId: `${process.env.NEXT_PUBLIC_messagingSenderId}`,
+    appId: `${process.env.NEXT_PUBLIC_appId}`
 };
 
 // Initialize Firebase
