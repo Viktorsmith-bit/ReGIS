@@ -88,22 +88,26 @@ export default function Consultar(props){
                             </div>:null
                         }
                     </div>
-                    <div className="flex flex-wrap justify-between lg:justify-start items-center gap-5 border border-gray-300 p-4 rounded-sm mt-2">
-                        <div className="lg:flex items-center gap-2 section">
-                            <h1 className="text-sm">Inicio</h1>
-                            <input onChange={capatarCambiosFechaInicio} value={fechaInicio} type="date" min="2023-03-01" className="text-sm border border-gray-300 h-10 px-2 input rounded-sm" />
+                    <div className="flex flex-wrap justify-between items-end gap-2 p-4 mt-2 border border-gray-300 rounded-sm w-full">
+                        <div className="w-full lg:flex-1">
+                            <select onChange={captarCambiosSelect} name="Selecciar" className="cursor-pointer input h-8 text-sm px-2 bg-gray-200">
+                                <option value="usuario" defaultValue>Usuario</option>
+                                <option value="nombres">Nombres</option>
+                                <option value="apellidos">Apellidos</option>
+                            </select>
+                            <div className="flex items-center border border-gray-300 w-full h-10 mt-2">
+                                <input onChange={capatarCambiosBuscar} value={buscar} name="buscar" type="text" className="input w-full px-2 text-sm text-gray-600 h-9" placeholder={`${select === 'usuario'?'Usuario':select === 'nombres'?'Nombres':'Apellidos'}`} />
+                                <div className='flex items-center justify-center w-12 h-10 '>
+                                    <svg onClick={limpiar} xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" className="cursor-pointer bi bi-x" viewBox="0 0 16 16">
+                                    <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                                    </svg>
+                                </div>
+                            </div>
                         </div>
-                        <div className="lg:flex items-center gap-2 section">
-                            <h1 className="text-sm">Fin</h1>
-                            <input onChange={capatarCambiosFechaFin} value={fechaFin} type="date" className="text-sm border border-gray-200 h-10 px-2 input rounded-sm" />
-                        </div>
-                        <button onClick={buscarFecha} className="text-sm color-walsh text-white w-full lg:w-32 h-10 rounded-sm">Filtrar</button>
-                    </div>
-                    <div className="flex flex-wrap justify-between lg:justify-start items-center gap-5 p-4 mt-2 border border-gray-300 rounded-sm w-full">
                         <div className="section">
                             <h1 className="text-sm">Área</h1>
                             <select onChange={captarCambiosArea} name="Area" className="mt-1 cursor-pointer input h-10 text-sm px-2 border border-gray-300">
-                                <option value="seleccionar" defaultValue>Seleccionar</option>
+                                <option value="seleccionar" defaultValue>Opción</option>
                                 <option value="DES">DES</option>
                                 <option value="DEA">DEA</option>
                                 <option value="GSI">GSI</option>
@@ -119,27 +123,20 @@ export default function Consultar(props){
                         <div className="section">
                             <h1 className="text-sm">Tarde</h1>
                             <select onChange={captarCambiosTarde} name="Tarde" className="mt-1 cursor-pointer input h-10 text-sm px-2 border border-gray-300">
-                                <option value="seleccionar" defaultValue>Seleccionar</option>
+                                <option value="seleccionar" defaultValue>Opción</option>
                                 <option value="Si">Si</option>
                                 <option value="No">No</option>
                             </select>
                         </div>
-                        <div className="flex-1">
-                            <h1 className="text-sm">Colaborador</h1>
-                            <div className="flex items-center border border-gray-300 w-full h-10 mt-1">
-                                <input onChange={capatarCambiosBuscar} value={buscar} name="buscar" type="text" className="input w-full px-2 text-sm text-gray-600 h-9" placeholder={`${select === 'usuario'?'Usuario':select === 'nombres'?'Nombres':'Apellidos'}`} />
-                                <div className='flex items-center justify-center w-12 h-10 '>
-                                    <svg onClick={limpiar} xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" className="cursor-pointer bi bi-x" viewBox="0 0 16 16">
-                                    <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
-                                    </svg>
-                                </div>
-                                <select onChange={captarCambiosSelect} name="Selecciar" className="cursor-pointer input h-6 text-sm px-2 border-l border-gray-300">
-                                    <option value="usuario" defaultValue>Usuario</option>
-                                    <option value="nombres">Nombres</option>
-                                    <option value="apellidos">Apellidos</option>
-                                </select>
-                            </div>
+                        <div className="section">
+                            <h1 className="text-sm">Inicio</h1>
+                            <input onChange={capatarCambiosFechaInicio} value={fechaInicio} type="date" min="2023-03-01" className="mt-1 text-sm border border-gray-300 h-10 px-2 input rounded-sm" />
                         </div>
+                        <div className="section">
+                            <h1 className="text-sm">Fin</h1>
+                            <input onChange={capatarCambiosFechaFin} value={fechaFin} type="date" className="mt-1 text-sm border border-gray-200 h-10 px-2 input rounded-sm" />
+                        </div>
+                        <button onClick={buscarFecha} className="text-sm color-walsh text-white px-3 h-10 rounded-sm">Filtrar fecha</button>
                     </div>
                     <div className="overflow-y-auto overflow-x-auto p-4 mt-2 border border-gray-300 rounded-sm w-full" style={{height:'600px'}}>                        
                         {
