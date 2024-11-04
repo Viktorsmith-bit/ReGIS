@@ -167,16 +167,17 @@ export default function Registro(props) {
     async function entrada(e){
         e.preventDefault();
         let hoy = new Date();
-        let mes = parseInt(hoy.getMonth() + 1) >= 10? hoy.getMonth() : '0' + '' + (hoy.getMonth() + 1)
+        let mes = parseInt(hoy.getMonth() + 1) >= 10? hoy.getMonth() + 1 : '0' + '' + (hoy.getMonth() + 1)
         let dia = parseInt(hoy.getDate()) >= 10? hoy.getDate() : '0' + hoy.getDate()
-        let id = hoy.getFullYear().toString() + mes.toString() + dia.toString();
-        let fecha = hoy.getFullYear() + '-' + mes + '-' + dia;
-        let getDia = hoy.getDay() 
+        let id = hoy.getFullYear().toString() + mes.toString() + dia.toString()
+        let fecha = hoy.getFullYear() + '-' + mes + '-' + dia
+        let getDia = hoy.getDay()
 
         let hora = hoy.getHours() >= 10? hoy.getHours() : '0' + hoy.getHours()
         let minutos = hoy.getMinutes() >= 10? hoy.getMinutes() : '0' + hoy.getMinutes() 
         let printHora = hora + ':' + minutos
         let registro = fecha + ' ' + printHora
+
         axios.post('https://app.casistemas.com/erh_api/Asistencia/JalaMarcasMasiva',
             {
                 "database":'PROD_WALSH',
@@ -248,7 +249,7 @@ export default function Registro(props) {
     async function salida(e){
         e.preventDefault();
         let hoy = new Date();
-        let mes = parseInt(hoy.getMonth() + 1) >= 10? hoy.getMonth() : '0' + '' + (hoy.getMonth() + 1)
+        let mes = parseInt(hoy.getMonth() + 1) >= 10? hoy.getMonth() + 1 : '0' + '' + (hoy.getMonth() + 1)
         let dia = parseInt(hoy.getDate()) >= 10? hoy.getDate() : '0' + hoy.getDate() 
         let id = hoy.getFullYear().toString() + mes.toString() + dia.toString();
         let fecha = hoy.getFullYear() + '-' + mes + '-' + dia;
@@ -258,6 +259,7 @@ export default function Registro(props) {
         let minutos = hoy.getMinutes() >= 10? hoy.getMinutes() : '0' + hoy.getMinutes() 
         let printHora = hora + ':' + minutos
         let registro = fecha + ' ' + printHora
+        
         axios.post('https://app.casistemas.com/erh_api/Asistencia/JalaMarcasMasiva',
             {
                 "database":'PROD_WALSH',
@@ -321,7 +323,7 @@ export default function Registro(props) {
     async function salidaA(e){
         e.preventDefault();
         let hoy = new Date();
-        let mes = parseInt(hoy.getMonth() + 1) >= 10? hoy.getMonth() : '0' + '' + (hoy.getMonth() + 1)
+        let mes = parseInt(hoy.getMonth() + 1) >= 10? hoy.getMonth() + 1 : '0' + '' + (hoy.getMonth() + 1)
         let dia = parseInt(hoy.getDate()) >= 10? hoy.getDate() : '0' + hoy.getDate() 
         let id = hoy.getFullYear().toString() + mes.toString() + dia.toString();
         let fecha = hoy.getFullYear() + '-' + mes + '-' + dia;
@@ -394,7 +396,7 @@ export default function Registro(props) {
     async function retornoA(e){
         e.preventDefault();
         let hoy = new Date();
-        let mes = parseInt(hoy.getMonth() + 1) >= 10? hoy.getMonth() : '0' + '' + (hoy.getMonth() + 1)
+        let mes = parseInt(hoy.getMonth() + 1) >= 10? hoy.getMonth() + 1 : '0' + '' + (hoy.getMonth() + 1)
         let dia = parseInt(hoy.getDate()) >= 10? hoy.getDate() : '0' + hoy.getDate() 
         let id = hoy.getFullYear().toString() + mes.toString() + dia.toString();
         let fecha = hoy.getFullYear() + '-' + mes + '-' + dia;
