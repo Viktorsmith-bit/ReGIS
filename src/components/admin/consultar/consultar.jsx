@@ -6,7 +6,7 @@ import { utils , writeFile} from 'xlsx';
 import { Toaster, toast } from 'sonner'
 
 let hoy = new Date();
-    let mes = parseInt(hoy.getMonth() + 1) >= 10? hoy.getMonth() : '0' + '' + (hoy.getMonth() + 1)
+    let mes = parseInt(hoy.getMonth() + 1) >= 10? hoy.getMonth() + 1 : '0' + '' + (hoy.getMonth() + 1)
     let dia = parseInt(hoy.getDate()) >= 10? hoy.getDate() : '0' + hoy.getDate() 
     let fecha = hoy.getFullYear() + '-' + mes + '-' + dia;
 
