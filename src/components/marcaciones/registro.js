@@ -59,7 +59,7 @@ export default function Registro(props) {
         function GetDatos(){
             let correo = props.email.toString().replace("@walshp.com.pe","")
             let hoy = new Date();
-            let mes = parseInt(hoy.getMonth() + 1) >= 10? hoy.getMonth() : '0' + '' + (hoy.getMonth() + 1)
+            let mes = parseInt(hoy.getMonth() + 1) >= 10? hoy.getMonth() + 1 : '0' + '' + (hoy.getMonth() + 1)
             let dia = parseInt(hoy.getDate()) >= 10? hoy.getDate() : '0' + hoy.getDate() 
             let id = hoy.getFullYear().toString() + mes.toString() + dia.toString();
             const starCountRef = ref(app, `marcaciones/${id}-${correo}`);
