@@ -96,14 +96,14 @@ export default function Datos(props){
     function Actualizar(e){
         e.preventDefault()
         update(ref(app, `Staff/` + props.user), {
-            Nombres: `${datos.nombres.toUpperCase()}`,
-            Apellidos: `${datos.apellidos.toUpperCase()}`,
+            Nombres: `${datos.nombres}`,
+            Apellidos: `${datos.apellidos}`,
             HoraE: datos.horaE,
             HoraS: datos.horaS,
             Dni: datos.dni,
-            Cargo: `${datos.cargo.toUpperCase()}`,
-            Area: `${datos.area.toUpperCase()}`,
-            Siglas: `${datos.siglas.toUpperCase()}`,
+            Cargo: `${datos.cargo}`,
+            Area: `${datos.area}`,
+            Siglas: `${datos.siglas}`,
         }).then(() => {
             toast.success('Los datos se han actualizado con éxito')
             setEdicion(false)
