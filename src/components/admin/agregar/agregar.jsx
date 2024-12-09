@@ -145,16 +145,16 @@ export default function Agregar(props){
                         }).catch((error) => {
                             console.log(error)
                     });
-                    set(ref(app, 'Staff/' + userName.toLowerCase()), {
-                        Nombres: `${nombres.toUpperCase()}`,
-                        Apellidos: `${apellidos.toUpperCase()}`,
+                    set(ref(app, 'Staff/' + userName), {
+                        Nombres: `${nombres}`,
+                        Apellidos: `${apellidos}`,
                         Correo: email,
                         HoraE: horaE,
                         HoraS: horaS,
                         Dni: dni,
-                        Cargo: `${cargo.toUpperCase()}`,
-                        Area: `${area.toUpperCase()}`,
-                        Siglas: `${siglas.toUpperCase()}`,
+                        Cargo: `${cargo}`,
+                        Area: `${area}`,
+                        Siglas: `${siglas}`,
                     })
                     toast.success('El usuario ha sido registrado con éxito')
                 }
