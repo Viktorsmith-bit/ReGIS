@@ -63,7 +63,6 @@ export default function Consultar(props){
 
         });
 
-        // 👇 devolvemos una función de limpieza
         return () => {
             if (unsubscribeStaff) unsubscribeStaff();
             if (unsubscribeMarc) unsubscribeMarc();
