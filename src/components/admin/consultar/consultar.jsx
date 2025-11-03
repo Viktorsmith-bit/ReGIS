@@ -6,9 +6,9 @@ import { utils , writeFile} from 'xlsx';
 import { Toaster, toast } from 'sonner'
 
 let hoy = new Date();
-    let mes = parseInt(hoy.getMonth() + 1) >= 10? hoy.getMonth() + 1 : '0' + '' + (hoy.getMonth() + 1)
-    let dia = parseInt(hoy.getDate()) >= 10? hoy.getDate() : '0' + hoy.getDate() 
-    let fecha = hoy.getFullYear() + '-' + mes + '-' + dia;
+let mes = parseInt(hoy.getMonth() + 1) >= 10? hoy.getMonth() + 1 : '0' + '' + (hoy.getMonth() + 1)
+let dia = parseInt(hoy.getDate()) >= 10? hoy.getDate() : '0' + hoy.getDate() 
+let fecha = hoy.getFullYear() + '-' + mes + '-' + dia;
 
 export default function Consultar(props){
     const [buscar, setBuscar] = useState('')
@@ -30,19 +30,47 @@ export default function Consultar(props){
     function capatarCambiosFechaFin(e){ e.preventDefault(),setFechaFin(e.target.value)}
     function buscarFecha(e){ e.preventDefault(),setFecha1(fechaInicio), setFecha2(fechaFin)}
 
-    useEffect(()=>{
-        function GetData(){
-            const starCountRef = ref(app, `marcaciones`);
-            onValue(starCountRef, (snapshot) => {
-                let rec = []
-                snapshot.forEach((item)=>{
-                    rec.push({key:item.key, "data":item.val()}) 
-                })
-                setColaborador(rec)
+    useEffect(() => {
+        const staffRef = ref(app, "Staff");
+        const marcacionesRef = ref(app, "marcaciones");
+
+        let unsubscribeStaff;
+        let unsubscribeMarc;
+
+        unsubscribeStaff = onValue(staffRef, (staffSnap) => {
+            let staffData = {};
+            staffSnap.forEach((item) => {
+                staffData[item.key] = item.val();
             });
-        }
-        return GetData();
-    },[])
+
+            unsubscribeMarc = onValue(marcacionesRef, (marcSnap) => {
+                const rec = [];
+                marcSnap.forEach((item) => {
+                    const data = item.key;
+                    const userKey = data.split("-")[1]; // 👈 aquí tomamos el nombre del usuario que está dentro del registro (ej. "vmedina")
+                    const staffInfo = staffData[userKey] || {}; // 👈 buscamos en Staff por ese nombre
+
+                    rec.push({
+                    key: item.key,
+                        data: {
+                            ...item.val(),
+                            DNI: staffInfo.Dni || "N/A",
+                        },
+                    });
+                });
+                setColaborador(rec);
+            });
+
+        });
+
+        // 👇 devolvemos una función de limpieza
+        return () => {
+            if (unsubscribeStaff) unsubscribeStaff();
+            if (unsubscribeMarc) unsubscribeMarc();
+        };
+    }, []);
+
+    console.log(colaborador)
 
     return(
         <div className={`${props.consultar === true?'bloque':'hidden'}`}>
@@ -53,7 +81,7 @@ export default function Consultar(props){
                     <div className="flex justify-end items-center mt-10">
                         {
                             colaborador !== undefined?<div onClick={(e)=>{
-                                   e.preventDefault()
+                                e.preventDefault()
                                 const ws = utils.json_to_sheet(
                                     colaborador.filter((item)=>{
                                         if(select === 'usuario'?item.key.includes(buscar):select === 'nombres'?item.data.nombres.toLowerCase().includes(buscar):item.data.apellidos.toLowerCase().includes(buscar)){
@@ -65,18 +93,21 @@ export default function Consultar(props){
                                                 }
                                             }
                                         }
-                                }).map((item)=>{
-                                        return {
-                                            Nombres: item.data.nombres + item.data.apellidos,
-                                            Fecha: item.data.fecha,
-                                            Dia: item.data.dia,
-                                            Tarde: item.data.tarde,
-                                            Entrada: item.data.horaE,
-                                            SalidaA: item.data.horaSA,
-                                            Retorno:item.data.horaRA, 
-                                            Salida:item.data.horaS
-                                        }
-                                    })
+                                }).flatMap((item) => {
+                                    const base = {
+                                        Nombres: item.data.nombres + ' ' + item.data.apellidos,
+                                        DNI: item.data.DNI,
+                                        Dia: item.data.dia,
+                                        Área: item.data.area
+                                    };
+
+                                    return [
+                                        { ...base, Registro: 'Entrada', Hora: item.data.horaE ? `${item.data.fecha} ${item.data.horaE}` : 'Sin registro' },
+                                        { ...base, Registro: 'SalidaA', Hora: item.data.horaSA ? `${item.data.fecha} ${item.data.horaSA}` : 'Sin registro' },
+                                        { ...base, Registro: 'RetornoA', Hora: item.data.horaRA ? `${item.data.fecha} ${item.data.horaRA}` : 'Sin registro' },
+                                        { ...base, Registro: 'Salida', Hora: item.data.horaS ? `${item.data.fecha} ${item.data.horaS}` : 'Sin registro' }
+                                    ];
+                                })
                                 )
                                 const wb = utils.book_new();
                                 utils.book_append_sheet(wb, ws, "Data");
@@ -144,7 +175,7 @@ export default function Consultar(props){
                                 <thead>
                                     <tr className="h-10 text-sm">
                                         <th className="text-start">Nombres</th>
-                                        <th className="text-start">Fecha</th>
+                                        <th className="text-start">DNI</th>
                                         <th className="text-start">Día</th>
                                         <th className="text-start">Tarde</th>
                                         <th className="text-start">Entrada</th>
@@ -163,7 +194,7 @@ export default function Consultar(props){
                                                             return <Fragment key={item.key}>
                                                                 <tr className={`h-10 text-sm ${item.data.tarde === 'Si'?'border border-red-600 bg-red-50 rounded-sm':'border border-green-600 bg-green-50 rounded-sm'}`}>
                                                                     <td className="px-2">{item.data.nombres.charAt(0).toUpperCase().split(' ', 1) +  item.data.nombres.slice(1).toLowerCase().split(' ', 1) + ' ' + item.data.apellidos.charAt(0).toUpperCase().split(' ', 1) + item.data.apellidos.slice(1).toLowerCase().split(' ', 1)}</td>
-                                                                    <td>{item.data.fecha}</td>
+                                                                    <td>{item.data.DNI}</td>
                                                                     <td>{item.data.dia}</td>
                                                                     <td>{item.data.tarde}</td>
                                                                     <td>{item.data.horaE}</td>
@@ -187,3 +218,22 @@ export default function Consultar(props){
         </div>
     )
 }
+
+{/** 
+    Fecha: item.data.fecha,
+
+    useEffect(()=>{
+        function GetData(){
+            const starCountRef = ref(app, `marcaciones`);
+            onValue(starCountRef, (snapshot) => {
+                let rec = []
+                snapshot.forEach((item)=>{
+                    rec.push({key:item.key, "data":item.val()}) 
+                })
+                setColaborador(rec)
+            });
+        }
+        return GetData();
+    },[])
+
+*/}
