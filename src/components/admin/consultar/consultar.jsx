@@ -47,8 +47,8 @@ export default function Consultar(props){
                 const rec = [];
                 marcSnap.forEach((item) => {
                     const data = item.key;
-                    const userKey = data.split("-")[1]; // 👈 aquí tomamos el nombre del usuario que está dentro del registro (ej. "vmedina")
-                    const staffInfo = staffData[userKey] || {}; // 👈 buscamos en Staff por ese nombre
+                    const userKey = data.split("-")[1]; 
+                    const staffInfo = staffData[userKey] || {};
 
                     rec.push({
                     key: item.key,
@@ -223,7 +223,7 @@ export default function Consultar(props){
     Fecha: item.data.fecha,
 
 
-    
+
     useEffect(()=>{
         function GetData(){
             const starCountRef = ref(app, `marcaciones`);
