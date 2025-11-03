@@ -222,6 +222,8 @@ export default function Consultar(props){
 {/** 
     Fecha: item.data.fecha,
 
+
+    
     useEffect(()=>{
         function GetData(){
             const starCountRef = ref(app, `marcaciones`);
